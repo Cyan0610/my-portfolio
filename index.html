@@ -68,6 +68,8 @@ nav .cta:hover{border-color:var(--gold);color:var(--gold)}
 .card:after{content:"";position:absolute;width:80px;height:80px;right:-40px;bottom:-40px;border-radius:50%;background:var(--accent,#79d9ff);filter:blur(26px);opacity:.08}
 .card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent,#79d9ff) 55%,#36424e)}
 .card .tag{font:8px monospace;letter-spacing:.14em;color:var(--accent,#79d9ff)}
+.card .card-fig{width:100%;height:120px;border-radius:3px;overflow:hidden;margin-bottom:14px;border:1px solid #1f2c38;background:#0d141b}
+.card .card-fig img{width:100%;height:100%;object-fit:cover;display:block}
 .card h4{font-size:18px;font-weight:500;margin:12px 0 8px}
 .card p{font-size:12px;line-height:1.8}
 
@@ -158,7 +160,7 @@ nav .cta:hover{border-color:var(--gold);color:var(--gold)}
   <p class="micro">01 / PROFILE · 我的画像</p>
   <div class="profile">
     <div class="portrait">
-      <div class="ph"><b>RE</b></div>
+      <img src="assets/avatar.svg" alt="我的画像 · 逆向工程与 AI" style="width:100%;height:100%;object-fit:cover">
     </div>
     <div>
       <h2>问题逆向，<br>直到<em>真相落地</em></h2>
@@ -220,31 +222,37 @@ nav .cta:hover{border-color:var(--gold);color:var(--gold)}
   <h2>把想法<br>变成<em>能跑的代码</em></h2>
   <div class="grid">
     <div class="card" style="--accent:#79d9ff">
+      <div class="card-fig"><img src="assets/proj-api.svg" alt="网站转 API 示意图"></div>
       <span class="tag">REVERSE ENGINEERING · API</span>
       <h4>网站 → API 客户端</h4>
       <p>抓取网页流量，用 AI 分析生成干净的 Python/JS/TS 客户端代码，把难缠的网站变成可稳定调用的接口。</p>
     </div>
     <div class="card" style="--accent:#e0b477">
+      <div class="card-fig"><img src="assets/proj-sign.svg" alt="签名还原示意图"></div>
       <span class="tag">JS REVERSE · SIGN</span>
       <h4>加密签名还原</h4>
       <p>定位并还原前端加密/签名算法，绕过反爬机制，让数据采集畅通无阻。</p>
     </div>
     <div class="card" style="--accent:#9a83ff">
+      <div class="card-fig"><img src="assets/proj-proto.svg" alt="协议分析示意图"></div>
       <span class="tag">PROTOCOL · ANALYSIS</span>
       <h4>协议解析器</h4>
       <p>用 Wireshark/Scapy 抓包分析，编写自定义协议解析器（含 Lua dissector），让私有协议无处遁形。</p>
     </div>
     <div class="card" style="--accent:#79d9ff">
+      <div class="card-fig"><img src="assets/proj-agent.svg" alt="Agent 工作流示意图"></div>
       <span class="tag">AI AGENT · AUTOMATION</span>
       <h4>Agent 工作流</h4>
       <p>用 Claude Code、Skill 系统搭建自动化工作流，把重复劳动交给 Agent，把时间留给思考。</p>
     </div>
     <div class="card" style="--accent:#e0b477">
+      <div class="card-fig"><img src="assets/proj-sign.svg" alt="开源探索示意图"></div>
       <span class="tag">OPEN SOURCE · EXPLORE</span>
       <h4>GitHub 热门复刻</h4>
       <p>跟踪 GitHub Trending，复刻并落地有趣的开源项目（Skill Recorder、agency-agents 等），边玩边学。</p>
     </div>
     <div class="card" style="--accent:#9a83ff">
+      <div class="card-fig"><img src="assets/proj-api.svg" alt="工具链集成示意图"></div>
       <span class="tag">TOOL · INTEGRATION</span>
       <h4>工具链集成</h4>
       <p>把各种 AI 工具、逆向 skill、脚本串成完整流水线，形成自己的效率体系。</p>
@@ -298,7 +306,7 @@ nav .cta:hover{border-color:var(--gold);color:var(--gold)}
   <p class="micro">06 / CONTACT · 联系我</p>
   <h2>让复杂变简单，<br>让想法能落地</h2>
   <div class="cta-row">
-    <a href="mailto:your@email.com" class="cta-btn">邮箱联系 →</a>
+    <a href="mailto:4779475@qq.com" class="cta-btn">邮箱联系 →</a>
     <a href="https://github.com/Cyan0610" class="cta-btn" target="_blank" rel="noopener">GitHub ↗</a>
   </div>
 </section>
