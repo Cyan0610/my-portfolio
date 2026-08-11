@@ -35,12 +35,32 @@ nav .cta{color:var(--ink);border:1px solid var(--line);padding:7px 16px;border-r
 nav .cta:hover{border-color:var(--gold);color:var(--gold)}
 
 /* hero */
-.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:0 20px;position:relative}
+.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:0 20px;position:relative;overflow:hidden}
 .hero:before{content:"";position:absolute;width:60vw;height:60vw;border-radius:50%;background:radial-gradient(circle,rgba(121,217,255,.12),transparent 60%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
-.hero .eyebrow{font:10px monospace;letter-spacing:.2em;color:var(--gold);margin-bottom:20px}
-.hero h1{font-size:clamp(44px,9vw,130px);font-weight:500;letter-spacing:-.06em;line-height:.95;margin:0 0 18px}
-.hero h1 em{font-style:normal;color:var(--blue)}
-.hero .sub{font-size:clamp(14px,2vw,20px);color:var(--dim);max-width:700px;margin:0 auto}
+.hero .y2k-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero .y2k-bg span{position:absolute;display:block}
+.hero .y2k-bg .star{width:34px;height:34px;filter:drop-shadow(0 0 8px rgba(255,113,206,.6))}
+.hero .y2k-bg .s1{top:14%;left:8%;animation:glow 3s ease-in-out infinite}
+.hero .y2k-bg .s2{top:22%;right:12%;width:26px;height:26px;animation:glow 3.6s ease-in-out infinite .5s}
+.hero .y2k-bg .s3{bottom:20%;left:16%;width:22px;height:22px;animation:glow 4s ease-in-out infinite 1s}
+.hero .y2k-bg .s4{bottom:30%;right:20%;width:30px;height:30px;animation:glow 3.2s ease-in-out infinite .8s}
+.hero .y2k-bg .smile{font-size:26px;opacity:.5;animation:glow 5s ease-in-out infinite}
+.hero .y2k-bg .gridlines{position:absolute;inset:0;background-image:linear-gradient(rgba(121,217,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(121,217,255,.05) 1px,transparent 1px);background-size:60px 60px}
+@keyframes glow{0%,100%{opacity:.35;transform:translateY(0) scale(1)}50%{opacity:.9;transform:translateY(-10px) scale(1.15)}}
+.hero .eyebrow{font:10px monospace;letter-spacing:.2em;color:var(--gold);margin-bottom:20px;position:relative;z-index:1}
+.hero h1{font-size:clamp(44px,9vw,130px);font-weight:500;letter-spacing:-.06em;line-height:.95;margin:0 0 18px;position:relative;z-index:1}
+.hero h1 .glitch{position:relative;display:inline-block}
+.hero h1 .glitch:before,.hero h1 .glitch:after{content:attr(data-text);position:absolute;left:0;top:0;width:100%;overflow:hidden;opacity:.8}
+.hero h1 .glitch:before{color:var(--violet);animation:glitchA 3s infinite linear alternate-reverse;clip-path:inset(0 0 55% 0)}
+.hero h1 .glitch:after{color:var(--blue);animation:glitchB 2.4s infinite linear alternate-reverse;clip-path:inset(55% 0 0 0)}
+@keyframes glitchA{0%{transform:translate(0)}20%{transform:translate(-2px,1px)}40%{transform:translate(2px,-1px)}60%{transform:translate(-1px,2px)}80%{transform:translate(1px,-2px)}100%{transform:translate(0)}}
+@keyframes glitchB{0%{transform:translate(0)}25%{transform:translate(2px,-1px)}50%{transform:translate(-2px,1px)}75%{transform:translate(1px,2px)}100%{transform:translate(0)}}
+.hero .y2k-badge{position:absolute;z-index:1;display:grid;place-items:center;width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,rgba(255,113,206,.85),rgba(1,205,254,.85));color:#fff;font:700 10px monospace;letter-spacing:.1em;text-align:center;box-shadow:0 0 30px rgba(255,113,206,.5);animation:spin 14s linear infinite}
+.hero .y2k-badge small{display:block;font-size:8px;font-weight:400;opacity:.9}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.hero .y2k-badge .b1{top:12%;right:7%}
+.hero .y2k-badge .b2{bottom:16%;left:6%;width:68px;height:68px;animation-duration:11s}
+.hero .sub{font-size:clamp(14px,2vw,20px);color:var(--dim);max-width:700px;margin:0 auto;position:relative;z-index:1}
 .hero .tags{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:34px}
 .hero .tags span{border:1px solid var(--line);padding:7px 14px;font-size:11px;border-radius:99px;color:var(--dim)}
 .hero .scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);font:9px monospace;letter-spacing:.2em;color:var(--dim);animation:bob 2s infinite}
@@ -75,6 +95,8 @@ nav .cta:hover{border-color:var(--gold);color:var(--gold)}
 .card p{font-size:12px;line-height:1.8}
 
 /* timeline */
+.journey-fig{width:100%;max-width:640px;border-radius:3px;overflow:hidden;border:1px solid #1f2c38;margin:26px 0 8px;background:#0d141b}
+.journey-fig img{width:100%;height:auto;display:block}
 .timeline{position:relative;margin-top:40px;padding-left:26px}
 .timeline:before{content:"";position:absolute;left:7px;top:4px;bottom:4px;width:1px;background:linear-gradient(180deg,var(--blue),var(--violet),var(--gold))}
 .tl-item{position:relative;padding-bottom:34px}
@@ -144,9 +166,21 @@ nav .cta:hover{border-color:var(--gold);color:var(--gold)}
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
+  <div class="y2k-bg">
+    <div class="gridlines"></div>
+    <img class="star s1" src="assets/y2k-star.svg" alt="">
+    <img class="star s2" src="assets/y2k-star.svg" alt="">
+    <img class="star s3" src="assets/y2k-star.svg" alt="">
+    <img class="star s4" src="assets/y2k-star.svg" alt="">
+    <span class="smile" style="top:32%;left:22%">✿</span>
+    <span class="smile" style="bottom:24%;right:26%">✦</span>
+    <span class="smile" style="top:50%;left:6%">☾</span>
+  </div>
+  <div class="y2k-badge b1">Y2K<br><small>EST. 2026</small></div>
+  <div class="y2k-badge b2">RE<br><small>LOVE LATER</small></div>
   <div>
     <div class="eyebrow">AI · REVERSE ENGINEERING · OPEN SOURCE</div>
-    <h1>把复杂<br>变成<em>可复用</em></h1>
+    <h1>把复杂<br>变成<span class="glitch" data-text="可复用">可复用</span></h1>
     <p class="sub">从工具玩家到逆向工程师，用 AI 与代码重新定义解决问题的边界。抓包、还原签名、网站转 API、Agent 自动化——让每个难缠的接口都变成稳定的客户端代码。</p>
     <div class="tags">
       <span>逆向工程</span><span>API 还原</span><span>AI Agent</span><span>自动化</span><span>Claude Code</span><span>开源探索</span>
@@ -188,6 +222,7 @@ nav .cta:hover{border-color:var(--gold);color:var(--gold)}
   <span class="section-no">02</span>
   <p class="micro">02 / CAREER JOURNEY · 探索历程</p>
   <h2>每一个<em>黑盒</em><br>都是一次成长的入口</h2>
+  <div class="journey-fig"><img src="assets/y2k-timeline.svg" alt="探索历程时间线示意图"></div>
   <div class="timeline">
     <div class="tl-item">
       <time>2024 — 起步</time>
@@ -266,6 +301,7 @@ nav .cta:hover{border-color:var(--gold);color:var(--gold)}
   <span class="section-no">04</span>
   <p class="micro">04 / AI EXPLORATION · AI 探索</p>
   <h2>不只使用 AI，<br>更在<em>重构工作方式</em></h2>
+  <div class="journey-fig"><img src="assets/y2k-ai.svg" alt="AI 探索能力体系示意图"></div>
   <div class="grid">
     <div class="card" style="--accent:#79d9ff"><span class="tag">01 / MCP / CLI / SKILL</span><h4>能力沉淀</h4><p>把常用能力封装成 Skill 与命令行工具，随取随用。</p></div>
     <div class="card" style="--accent:#e0b477"><span class="tag">02 / API / RAG / RPA</span><h4>数据与自动化</h4><p>用 API 抓取、RAG 检索、RPA 自动化，打通数据链路。</p></div>
